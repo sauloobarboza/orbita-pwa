@@ -191,3 +191,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #a58a
 .game-hero .journey-spark{z-index:1;color:#ffe27a;text-shadow:0 0 12px #ffd85e}
 @media(max-width:1050px){.game-hero{grid-template-columns:minmax(210px,1fr) 180px minmax(180px,220px)}.game-hero .mascot-card{width:180px}.game-hero .flow-mascot{width:185px}.game-hero .level-orb{grid-column:1/-1;grid-row:3;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:8px}.game-hero .orb-ring{width:48px;height:48px;border-width:4px}.game-hero .orb-ring strong{font-size:20px}.game-hero .xp-track{max-width:120px}}
 @media(max-width:650px){.game-hero{grid-template-columns:minmax(0,1fr) 112px!important;grid-template-rows:auto auto auto auto!important;grid-template-areas:"stats stats" "copy avatar" "missions missions" "level level";gap:12px 5px;padding:17px 14px!important;min-height:0}.game-topstats{grid-area:stats;justify-content:flex-start;gap:5px}.game-topstats span{font-size:7px;padding:6px 8px}.game-hero .journey-copy{grid-area:copy;max-width:none}.game-hero .journey-copy h1{font-size:22px;line-height:1.12}.game-hero .journey-copy p{font-size:10px}.game-hero .journey-actions{margin-top:12px}.game-hero .journey-cta,.game-hero .journey-secondary{font-size:8px;padding:8px}.game-hero .mascot-card{grid-area:avatar;width:112px;min-height:155px;margin:0;justify-self:center}.game-hero .flow-mascot{width:125px;height:145px}.game-hero .mascot-speech{font-size:7px;padding:6px 7px}.game-hero .mascot-caption{font-size:6px}.game-hero .game-missions{grid-area:missions;width:100%;padding:12px}.game-hero .level-orb{grid-area:level;grid-column:auto;grid-row:auto;display:grid;grid-template-columns:48px 1fr;justify-items:start;gap:3px 10px;width:100%;padding:9px 12px}.game-hero .orb-ring{grid-row:span 3}.game-hero .xp-track{width:100%;max-width:none}.game-hero .level-orb>small,.game-hero .coin-label{font-size:7px}.game-hero .journey-spark{display:none}}
+
+
+/* GAME WORLD MAP SKIN */
+.life-map{background:radial-gradient(ellipse at 50% 0%,#304d9b 0%,#172554 48%,#101936 100%);border:1px solid #4c5eaa;box-shadow:inset 0 1px #ffffff20,0 18px 38px #111d4930}
+.map-origin{background:linear-gradient(135deg,#7739ed,#b43df2);box-shadow:0 0 30px #a34dff75,0 12px 25px #050a2580}
+.origin-glow{border-color:#cbb7ff}.map-origin>small{color:#e7ddff}
+.map-trunk,.map-branches:before,.map-branch:before{background:linear-gradient(90deg,#45d9ff,#a67cff,#ff8ce7);box-shadow:0 0 10px #7b83ff88}
+.map-node{background:linear-gradient(145deg,#26396e,#151f47);border:1px solid #6475bd;color:#fff;box-shadow:0 8px 20px #050a2860,inset 0 1px #ffffff24}
+.map-node:hover{border-color:#e2c0ff;box-shadow:0 0 20px #9c6dff70;transform:translateY(-4px) scale(1.015)}
+.map-node-copy b{color:#fff}.map-node-copy small{color:#b9c8f4}.map-node-count{background:#6542b9;color:#fff}
+.map-child{background:#111b3b;border-color:#46558b}.map-child b{color:#f4f3ff}.map-child small{color:#aebce6}.map-empty{border-color:#52639c;color:#aab8e5}
+.map-add{background:#342465;border-color:#9b7ce3;color:#e6d9ff}.map-add:hover{background:#51368d}
+.map-branch-foot{color:#b8c5eb}.map-footer b{color:#f1f2ff}.map-footer small{color:#aab9e6}.map-footer button{color:#c6a9ff}
+@media(max-width:650px){.life-map{background:radial-gradient(ellipse at 50% 0%,#304d9b 0%,#172554 48%,#101936 100%)}}

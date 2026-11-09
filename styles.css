@@ -133,3 +133,33 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #a58a
 @media(max-width:900px){.map-branches{grid-template-columns:repeat(3,minmax(0,1fr))}.map-branches:before{left:16.66%;right:16.66%}}
 @media(max-width:650px){.journey-head{padding:23px 19px;min-height:0;align-items:flex-start}.journey-copy h1{font-size:24px}.journey-copy h1 br{display:none}.level-orb{width:85px;gap:5px}.orb-ring{width:67px;height:67px;border-width:5px}.orb-ring strong{font-size:25px}.orb-ring span{font-size:6px}.level-orb>b{font-size:10px}.level-orb>small{font-size:7px;text-align:center}.journey-copy p{max-width:230px;line-height:1.5}.journey-actions{gap:6px}.journey-cta,.journey-secondary{padding:10px;font-size:9px}.spark-one{display:none}.map-toolbar{align-items:flex-start;flex-direction:column}.life-map{padding:19px 12px;border-radius:20px;overflow-x:auto}.map-origin{width:230px}.map-branches{display:flex;align-items:flex-start;gap:12px;width:max-content;min-width:100%;padding:12px 2px 8px}.map-branches:before{left:7%;right:7%}.map-branch{width:210px;flex:none}.map-branch:before{left:50%}.map-node{min-height:65px}.map-footer{align-items:flex-start}.map-footer button{white-space:nowrap}}
 .dark .life-map{background:radial-gradient(circle at 50% 8%,#33264f 0,transparent 38%),linear-gradient(180deg,#211b33,#1e192e);border-color:#403657}.dark .map-node,.dark .map-child{background:#29223c;border-color:#403657}.dark .map-node-copy b,.dark .map-child b{color:#f2edff}.dark .map-node-copy small,.dark .map-child small{color:#aaa0c4}.dark .map-branches:before,.dark .map-branch:before,.dark .map-trunk{background:#51416e}.dark .map-empty{border-color:#51416e;color:#aaa0c4}.dark .map-add{background:#302546;border-color:#574579;color:#c3afff}.dark .map-node-count{background:#3b3052;color:#d1c2ff}
+
+
+/* FLOW MASCOT + GAME REWARDS */
+.mascot-card{position:relative;z-index:2;flex:none;width:145px;min-height:184px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:7px 5px 9px;margin:0 4px;color:#fff}
+.mascot-speech{position:relative;z-index:3;max-width:150px;padding:8px 10px;border-radius:13px 13px 13px 4px;background:#fff;color:#5235a8;font:900 9px/1.35 Nunito,sans-serif;text-align:center;box-shadow:0 5px 15px #24114c24;animation:speech-pop .5s ease both}
+.flow-mascot{width:132px;height:145px;overflow:visible;filter:drop-shadow(0 8px 8px #20134a20);animation:mascot-float 2.8s ease-in-out infinite}
+.mascot-body{transform-origin:90px 190px;animation:mascot-bounce 2.8s ease-in-out infinite}
+.mascot-wave-arm{transform-origin:128px 145px;animation:mascot-wave .8s ease-in-out infinite alternate}
+.mascot-eyes{transform-origin:center;animation:mascot-blink 4s infinite}
+.mascot-mouth{transition:all .3s}
+.mascot-tears{opacity:0;transition:opacity .2s}
+.mascot-hearts{opacity:0;animation:heart-float 2s ease-in-out infinite}
+.mascot-caption{font-size:7px;font-weight:900;letter-spacing:1.2px;color:#e9e2ff;margin-top:-1px}
+.mascot-card.wave .mascot-wave-arm{animation:mascot-wave .55s ease-in-out infinite alternate}
+.mascot-card.wave .mascot-mouth{d:path("M78 105 Q90 116 102 105")}
+.mascot-card.happy .mascot-mouth{d:path("M75 101 Q90 125 105 101");stroke-width:5}
+.mascot-card.happy .mascot-hearts{opacity:1}
+.mascot-card.happy .mascot-wave-arm{animation:mascot-wave .7s ease-in-out infinite alternate}
+.mascot-card.sad .mascot-tears{opacity:1}
+.mascot-card.sad .mascot-mouth{d:path("M78 113 Q90 99 102 113")}
+.mascot-card.sad .mascot-wave-arm{animation:none;transform:rotate(30deg)}
+.coin-label{font-size:8px;color:#e7ddff;text-align:center}
+.map-footer{position:relative}
+@keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes mascot-bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(1deg)}}
+@keyframes mascot-wave{from{transform:rotate(-13deg)}to{transform:rotate(18deg)}}
+@keyframes mascot-blink{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.12)}}
+@keyframes heart-float{0%,100%{transform:translateY(3px) scale(.9)}50%{transform:translateY(-8px) scale(1.1)}}
+@keyframes speech-pop{from{opacity:0;transform:translateY(5px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:650px){.journey-head{flex-wrap:wrap;align-items:center}.mascot-card{order:3;width:108px;min-height:132px;margin:-5px 0 -4px auto}.mascot-speech{font-size:8px;padding:6px 8px}.flow-mascot{width:105px;height:112px}.mascot-caption{font-size:6px}.level-orb{margin-left:auto}.coin-label{font-size:7px}}

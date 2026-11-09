@@ -27,4 +27,31 @@ function submit(e){e.preventDefault();if(!editing)return;let f=new FormData($("e
 function all(){todayView();habitsView();notesView()}
 function bind(){document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>tab(b.dataset.tab));document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>tab(b.dataset.go));document.addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;if(b.dataset.check){let k=b.dataset.date;data.checks[k]??={};data.checks[k][b.dataset.check]=!data.checks[k][b.dataset.check];save();all()}if(b.dataset.day){selected=b.dataset.day;month=date(selected);notesView()}if(b.dataset.editH)editor("habit",data.habits.find(h=>h.id===b.dataset.editH));if(b.dataset.archive){let h=data.habits.find(h=>h.id===b.dataset.archive);if(h)h.archived=true;save();habitsView()}if(b.dataset.editG)editor("goal",data.goals.find(g=>g.id===b.dataset.editG));if(b.dataset.delEvent){data.events=data.events.filter(x=>x.id!==b.dataset.delEvent);save();all()}if(b.dataset.delPin){data.pinnedNotes=data.pinnedNotes.filter(x=>x.id!==b.dataset.delPin);save();notesView()}});$("addHabitBtn").onclick=()=>editor("habit");$("addGoalBtn").onclick=()=>editor("goal");$("addEventBtn").onclick=()=>editor("event");$("addPinnedBtn").onclick=()=>editor("pin");$("editorForm").onsubmit=submit;$("closeDialog").onclick=$("cancelDialog").onclick=()=>$("editorDialog").close();$("dailyNote").oninput=()=>{data.dailyNotes[selected]=$("dailyNote").value;save();calendar();if(selected===today())$("todayNotePreview").textContent=$("dailyNote").value||"Nenhuma nota registrada hoje."};$("prevMonth").onclick=()=>{month.setMonth(month.getMonth()-1);calendar()};$("nextMonth").onclick=()=>{month.setMonth(month.getMonth()+1);calendar()};$("searchNotes").oninput=searchNotes;$("settingsBtn").onclick=()=>$("settingsDialog").showModal();$("closeSettings").onclick=()=>$("settingsDialog").close();$("exportBtn").onclick=()=>{let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.href=u;a.download="orbita-backup-"+today()+".json";a.click();URL.revokeObjectURL(u)};$("importFile").onchange=async e=>{try{let o=JSON.parse(await e.target.files[0].text());if(!confirm("O backup substituirá os dados atuais. Continuar?"))return;data={...empty(),...o};save();all();toast("Backup importado.")}catch{toast("Arquivo inválido.")}e.target.value=""};$("clearBtn").onclick=()=>{if(confirm("Apagar todos os dados deste aparelho?")){data=empty();save();all();$("settingsDialog").close()}}}
 function voice(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$("voiceBtn").classList.add("hidden");return}let r=new SR();r.lang="pt-BR";r.onresult=e=>{$("dailyNote").value+=($("dailyNote").value?" ":"")+e.results[0][0].transcript;$("dailyNote").dispatchEvent(new Event("input"))};r.onerror=()=>toast("Verifique a permissão do microfone.");$("voiceBtn").onclick=()=>{try{r.start()}catch{toast("O microfone já está ativo.")}}}
+let installPrompt=null;
+const installButton=$("installBtn");
+window.addEventListener("beforeinstallprompt",event=>{
+  event.preventDefault();
+  installPrompt=event;
+  installButton.hidden=false;
+});
+installButton.addEventListener("click",async()=>{
+  if(!installPrompt){
+    toast("Para instalar: abra o menu do navegador e escolha Instalar aplicativo ou Adicionar à tela inicial.");
+    return;
+  }
+  installPrompt.prompt();
+  const choice=await installPrompt.userChoice;
+  if(choice&&choice.outcome==="accepted")toast("Órbita instalado com sucesso!");
+  installPrompt=null;
+  installButton.hidden=true;
+});
+window.addEventListener("appinstalled",()=>{
+  installPrompt=null;
+  installButton.hidden=true;
+  toast("Órbita instalado no aparelho!");
+});
+if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!window.matchMedia("(display-mode: standalone)").matches){
+  installButton.hidden=false;
+  installButton.addEventListener("click",()=>toast("No Safari: toque em Compartilhar e depois em Adicionar à Tela de Início."));
+}
 bind();voice();all();if("serviceWorker"in navigator&&location.protocol!=="file:")addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.warn));

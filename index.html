@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b20">
+  <meta name="description" content="Hábitos, metas, notas e calendário em um só lugar.">
+  <title>Órbita — sua rotina</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div><div class="eyebrow">SEU ESPAÇO PESSOAL</div><div class="brand">órbita<span>.</span></div></div>
+      <button id="settingsBtn" class="icon-button" aria-label="Configurações" title="Dados e configurações">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6ZM19.4 13.5l1.1.9-1.1 1.9-1.4-.5a7.9 7.9 0 0 1-1.5.9l-.2 1.5h-2.2l-.4-1.4a7.8 7.8 0 0 1-1.8 0l-.8 1.2-2-.9.3-1.5a7.6 7.6 0 0 1-1.2-1.3l-1.5.2-.8-2.1 1.2-.8a7.7 7.7 0 0 1-.1-1.8l-1.3-.8.8-2.1 1.5.3a7.6 7.6 0 0 1 1.3-1.2l-.2-1.5 2.1-.8.8 1.2a7.7 7.7 0 0 1 1.8-.1l.8-1.3 2.1.8-.3 1.5a7.6 7.6 0 0 1 1.2 1.3l1.5-.2.8 2.1-1.2.8a7.7 7.7 0 0 1 .1 1.8Z"/></svg>
+      </button>
+    </header>
+    <main id="views">
+      <section class="view active" id="view-today" data-view="today">
+        <div class="hero-card glass"><div class="hero-copy"><div class="eyebrow" id="dateLabel">HOJE</div><h1 id="greeting">Bom dia.</h1><p id="dailyMessage">Um passo de cada vez.</p></div><div class="ring" id="dayRing" style="--progress:0"><div><strong id="ringNumber">0%</strong><small>DO DIA</small></div></div></div>
+        <div class="section-heading"><div><div class="eyebrow">SEU DIA</div><h2>Visão geral</h2></div><span class="date-chip" id="todayDate"></span></div>
+        <div class="stats-grid"><article class="stat-card glass"><span class="stat-icon cyan">✓</span><strong id="pendingCount">0</strong><small>hábitos pendentes</small></article><article class="stat-card glass"><span class="stat-icon violet">◷</span><strong id="eventCount">0</strong><small>eventos hoje</small></article></div>
+        <div id="upcomingAlert" class="alert glass hidden"></div>
+        <div class="section-heading compact"><h2>Hábitos de hoje</h2><button class="text-button" data-go="habits">Ver todos</button></div><div id="todayHabits" class="stack"></div>
+        <div class="section-heading compact"><h2>Nota do dia</h2><button class="text-button" data-go="notes">Abrir notas</button></div><div id="todayNotePreview" class="note-preview glass">Nenhuma nota registrada hoje.</div>
+      </section>
+      <section class="view" id="view-habits" data-view="habits">
+        <div class="page-intro"><div class="eyebrow">CONSISTÊNCIA CONSTRÓI RESULTADOS</div><h1>Hábitos <span>&</span> metas</h1><p>Pequenas ações, todos os dias.</p></div>
+        <div class="section-heading"><h2>Seus hábitos</h2><button class="primary small" id="addHabitBtn">＋ Hábito</button></div><div id="habitList" class="stack"></div>
+        <div class="section-heading"><h2>Metas</h2><button class="secondary small" id="addGoalBtn">＋ Meta</button></div><div id="goalList" class="stack"></div>
+        <div class="section-heading"><h2>Revisão semanal</h2><span class="muted" id="weekRange"></span></div><div class="glass weekly-card"><div id="weeklyReview" class="week-grid"></div><div class="week-total"><span>Conclusão da semana</span><strong id="weekPercent">0%</strong></div><div class="progress-track"><div id="weekBar" class="progress-fill"></div></div></div>
+      </section>
+      <section class="view" id="view-notes" data-view="notes">
+        <div class="page-intro"><div class="eyebrow">IDEIAS, PLANOS E COMPROMISSOS</div><h1>Notas <span>&</span> calendário</h1><p>Registre agora. Encontre depois.</p></div>
+        <div class="calendar glass"><div class="calendar-head"><button class="icon-button" id="prevMonth" aria-label="Mês anterior">‹</button><h2 id="monthTitle"></h2><button class="icon-button" id="nextMonth" aria-label="Próximo mês">›</button></div><div class="calendar-grid weekdays"><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span><span>DOM</span></div><div class="calendar-grid" id="calendarDays"></div></div>
+        <div class="section-heading"><h2 id="selectedDateTitle">Hoje</h2><button class="primary small" id="addEventBtn">＋ Evento</button></div>
+        <label class="field-label" for="dailyNote">Nota do dia <span id="saveStatus">Salvo automaticamente</span></label><textarea id="dailyNote" class="glass textarea" rows="4" placeholder="O que você quer registrar?"></textarea>
+        <div class="voice-row"><button id="voiceBtn" class="secondary small">🎙 Ditado por voz</button><span class="muted">Português (Brasil)</span></div>
+        <div class="section-heading compact"><h2>Eventos deste dia</h2></div><div id="dayEvents" class="stack"></div>
+        <div class="section-heading"><h2>Notas fixas</h2><button id="addPinnedBtn" class="secondary small">＋ Nota fixa</button></div><div id="pinnedNotes" class="stack"></div>
+        <div class="section-heading"><h2>Buscar nas notas</h2></div><input id="searchNotes" class="glass search-input" type="search" placeholder="Buscar em notas diárias e fixas…"><div id="searchResults" class="stack"></div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Navegação principal"><button class="nav-item active" data-tab="today"><span>⌂</span><small>Hoje</small></button><button class="nav-item" data-tab="habits"><span>✧</span><small>Hábitos</small></button><button class="nav-item" data-tab="notes"><span>▦</span><small>Notas</small></button></nav>
+  </div>
+  <dialog id="editorDialog" class="dialog glass"><form id="editorForm" method="dialog"><div class="dialog-head"><h2 id="dialogTitle">Adicionar</h2><button type="button" class="icon-button" id="closeDialog">×</button></div><div id="dialogFields" class="dialog-fields"></div><div class="dialog-actions"><button type="button" class="secondary" id="cancelDialog">Cancelar</button><button type="submit" class="primary">Salvar</button></div></form></dialog>
+  <dialog id="settingsDialog" class="dialog glass"><form method="dialog"><div class="dialog-head"><h2>Seus dados</h2><button type="button" class="icon-button" id="closeSettings">×</button></div><p class="muted">Tudo fica armazenado neste aparelho. Exporte um backup periodicamente.</p><div class="settings-actions"><button type="button" class="primary" id="exportBtn">⇩ Exportar backup JSON</button><label class="secondary file-label">⇧ Importar backup JSON<input type="file" id="importFile" accept="application/json,.json" hidden></label><button type="button" class="danger" id="clearBtn">Apagar todos os dados</button></div><p class="tiny muted" id="storageInfo">Armazenamento local do aparelho • versão 1</p></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div><script src="app.js" defer></script>
+</body>
+</html>

@@ -19,3 +19,13 @@ button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}.a
 @media(min-width:600px){.app-shell{padding-left:26px;padding-right:26px}.hero-card{padding:28px}.stats-grid{gap:14px}}
 /* Instalação PWA */
 .topbar-actions{display:flex;align-items:center;gap:9px}.install-button{border:1px solid rgba(85,231,255,.45);border-radius:13px;padding:10px 12px;min-height:42px;background:linear-gradient(110deg,rgba(42,205,233,.2),rgba(137,117,255,.2));color:var(--cyan);font-size:.75rem;font-weight:800;box-shadow:0 0 16px rgba(85,231,255,.1)}.install-button[hidden]{display:none}@media(max-width:360px){.install-button{font-size:.68rem;padding:8px}.topbar-actions{gap:6px}}
+
+/* Painel de instalação do PWA */
+.install-panel{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px;margin:0 0 18px;border:1px solid rgba(85,231,255,.28);background:linear-gradient(115deg,rgba(35,204,231,.12),rgba(137,91,255,.12))}
+.install-panel[hidden]{display:none}
+.install-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.install-copy strong{font-size:.9rem;color:var(--text)}
+.install-copy span{font-size:.72rem;line-height:1.45;color:var(--muted)}
+.install-cta{flex-shrink:0;border:0;border-radius:12px;padding:12px 14px;background:linear-gradient(110deg,#35dff5,#a45bff);color:#090b20;font-weight:900;font-size:.78rem}
+.install-cta span{margin-left:5px}
+@media(max-width:390px){.install-panel{align-items:flex-start;flex-direction:column}.install-cta{width:100%}}

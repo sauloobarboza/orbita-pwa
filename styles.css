@@ -3,3 +3,102 @@
 @media(max-width:1000px){.sidebar{width:220px}.main{margin-left:220px}.content{padding:25px 22px 55px}.topbar{padding:0 22px}.stats{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.sidebar{display:none}.main{margin-left:0}.topbar{height:58px;padding:0 15px}.breadcrumbs,.search-trigger kbd,.top-actions .icon-btn{display:none}.mobile-brand{display:block;border:0;background:none;font:800 17px Manrope;color:var(--ink)}.mobile-brand span{font-size:9px;color:var(--blue);margin-left:4px;letter-spacing:1px}.top-actions{gap:7px}.search-trigger{min-width:0;width:37px;height:35px;padding:0;justify-content:center}.search-trigger span{font-size:20px}.content{padding:23px 15px 90px}.page-head{align-items:flex-start;flex-direction:column;margin-bottom:19px}.page-head h1{font-size:23px}.head-actions{width:100%}.head-actions .btn{flex:1}.stats{gap:9px}.stat{padding:13px;gap:9px}.stat strong{font-size:20px}.stat-icon{width:32px;height:32px}.module-grid{grid-template-columns:1fr 1fr;gap:9px}.module-card{padding:13px}.calendar-day{min-height:65px;padding:5px}.calendar-grid{gap:4px}.calendar-week{gap:4px}.mobile-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;z-index:12;bottom:0;left:0;right:0;padding:8px 7px calc(8px + env(safe-area-inset-bottom));background:#ffffffed;border-top:1px solid var(--line);backdrop-filter:blur(16px)}.mobile-nav a,.mobile-nav button{display:grid;justify-items:center;gap:2px;font-size:17px;color:#778398;border:0;background:none}.mobile-nav small{font-size:8px}.mobile-nav button{color:var(--blue)}.dark .mobile-nav{background:#1a2434ed}.form-grid{grid-template-columns:1fr}.form-control.full{grid-column:auto}.kanban{grid-template-columns:repeat(5,190px)}.welcome{padding:19px}.welcome h2{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* FLOW FRIENDLY — Nubank confidence + Duolingo energy */
+:root{
+ --bg:#f7f6ff;--surface:#fff;--surface2:#f2f0ff;--ink:#211b3a;--muted:#817b98;
+ --line:#ece8f7;--blue:#6b45d8;--blue2:#5733c4;--blue-soft:#f0ebff;
+ --green:#168b68;--amber:#c98722;--red:#d94e65;--shadow:0 10px 30px rgba(58,37,112,.07);--radius:21px;
+}
+body{background:radial-gradient(ellipse at 85% 0%,#eee8ff 0,transparent 32%),var(--bg)}
+.brand{font-family:'Nunito','DM Sans',sans-serif;font-weight:900;letter-spacing:-1px}
+.brand-mark{background:linear-gradient(145deg,#7a4ce0,#5634c7);border-radius:14px;box-shadow:0 7px 16px #6842d833}
+.sidebar{border-right-color:#eeeaf7}
+.workspace-switch{background:#f7f4ff;border-color:#ece5ff;border-radius:15px}
+.nav a,.nav-link,.sidebar-bottom>a{border-radius:12px;transition:background .18s,transform .18s,color .18s}
+.nav a:hover,.nav-link:hover,.sidebar-bottom>a:hover{transform:translateX(2px)}
+.nav a.active{background:#f0eaff;color:#603bc8}
+.main{min-width:0}
+.topbar{gap:16px}
+.top-actions{min-width:0;flex:0 1 auto}
+.search-trigger{flex:0 0 248px;min-width:0;white-space:nowrap;overflow:hidden}
+.search-trigger span{flex:none}
+.search-trigger kbd{flex:none}
+.content{max-width:1480px}
+.page-head h1,.welcome h2,.section-title h2,.module-card h3{font-family:'Nunito','Manrope',sans-serif}
+.page-head h1{font-size:28px;font-weight:900;letter-spacing:-.8px}
+.page-head p{font-size:13px}
+.card{border-radius:21px;box-shadow:0 8px 26px rgba(55,38,100,.045);transition:transform .2s,border-color .2s,box-shadow .2s}
+.section-card{padding:22px}
+.stat{border-radius:19px;padding:18px}
+.stat-icon,.module-icon{border-radius:14px;background:#f0ebff;color:#6842d2}
+.stat strong{font-family:'Nunito','Manrope',sans-serif;font-weight:900}
+.btn{border-radius:13px;min-height:40px;padding:10px 15px;transition:transform .16s,box-shadow .16s,background .16s}
+.btn:active,.icon-btn:active{transform:scale(.97)}
+.btn.primary{background:linear-gradient(135deg,#744cde,#5735c6);border-color:#6842d2;box-shadow:0 5px 13px #6943d52b}
+.btn.primary:hover{background:linear-gradient(135deg,#6840d0,#4d2eb8);transform:translateY(-1px)}
+.btn.soft{background:#f1ecff;border-color:#e8dfff;color:#623dc9}
+.icon-btn{border-radius:12px}
+.welcome{background:linear-gradient(112deg,#4827a8 0%,#6840d0 58%,#8b68ed 100%);border-radius:24px;padding:27px;box-shadow:0 13px 30px #6440ca25}
+.welcome h2{font-size:25px;font-weight:900}
+.welcome p{font-size:12px}
+.welcome .btn{border-radius:13px;background:#ffffff20;border-color:#ffffff45}
+.welcome .btn:hover{background:#ffffff32}
+.module-grid{gap:13px}
+.module-card{border-radius:19px;padding:19px;position:relative;overflow:hidden}
+.module-card:hover{transform:translateY(-3px);border-color:#d9ccff;box-shadow:0 13px 28px #5733c414}
+.module-card h3{font-size:14px;font-weight:900}
+.module-card p{font-size:11px}
+.module-icon{width:39px;height:39px;font-size:17px}
+.workspace-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 8px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;border-radius:13px;cursor:pointer;transition:background .18s,transform .18s}
+.workspace-link:last-child{border-bottom:0}
+.workspace-link:hover{background:#f7f4ff;transform:translateX(2px)}
+.workspace-link .module-icon{margin:0;flex:none}
+.workspace-link .row-main b{font-size:12px}
+.workspace-arrow{font-size:18px;color:var(--blue);font-weight:800}
+.task-row,.list-row{padding:13px 2px}
+.check{border-radius:7px}
+.project-item{padding:15px 0}
+.progress{height:8px;background:#f0edfa}
+.progress span{background:linear-gradient(90deg,#7b54df,#a18af0)}
+.pill{background:#f0ebff;color:#6741cf;border-radius:30px;padding:5px 9px}
+.empty{border-radius:16px;background:#fcfbff}
+.search-trigger{border-radius:13px;background:#f7f5ff;border-color:#ebe5fb;color:#766d91}
+.search-trigger kbd{border-radius:6px;background:#fff;color:#887fa0}
+.search-modal{border-radius:23px;box-shadow:0 25px 90px #2b1a5540}
+.search-input-row{padding:3px 4px 12px;border-bottom:1px solid var(--line)}
+.search-input-row>span{font-size:22px;color:var(--blue)}
+.search-input-row input{min-width:0}
+.search-result{display:block;width:100%;text-align:left;border:0;border-radius:12px;background:transparent;padding:13px 12px;font:inherit;transition:background .15s}
+.search-result:hover{background:#f4f0ff}
+.search-result b{font-size:12px;color:var(--ink)}
+.search-result small{font-size:10px}
+.toast{border-radius:14px;background:#292044;box-shadow:0 8px 25px #1d123b30}
+.mobile-nav{box-shadow:0 -6px 25px #34245b0b}
+.mobile-nav a,.mobile-nav button{font-weight:800}
+.mobile-nav button{background:#f0ebff;border-radius:14px;color:#6741cf}
+@media(max-width:1000px){.search-trigger{flex-basis:210px}}
+@media(max-width:700px){
+ body{background:var(--bg)}
+ .topbar{gap:8px}
+ .top-actions{gap:6px}
+ .search-trigger{flex:0 0 38px;width:38px;min-width:38px;height:38px;padding:0;display:grid;place-items:center;border-radius:13px}
+ .search-trigger span{font-size:21px}
+ .search-trigger kbd{display:none}
+ .content{padding:22px 14px 94px}
+ .page-head h1{font-size:25px}
+ .welcome{padding:21px;border-radius:21px}
+ .welcome h2{font-size:21px}
+ .section-card{padding:17px}
+ .module-card{padding:14px;border-radius:17px}
+ .module-card h3{font-size:12px}
+ .workspace-link{padding:12px 4px}
+}
+.dark{--bg:#171326;--surface:#211b33;--surface2:#2a2340;--ink:#f5f1ff;--muted:#aaa0c4;--line:#38304e;--blue:#a58aff;--blue2:#8e6cf0;--blue-soft:#342951;--shadow:0 9px 28px #0003}
+.dark body{background:radial-gradient(ellipse at 85% 0%,#30234d 0,transparent 32%),var(--bg)}
+.dark .workspace-switch,.dark .search-trigger{background:#2a2340;border-color:#3b3155}
+.dark .workspace-link:hover,.dark .search-result:hover{background:#302646}
+.dark .search-trigger kbd{background:#211b33;border-color:#403657;color:#c8bce5}
+.dark .empty{background:#261f39}
+.dark .progress{background:#38304e}
+.dark .mobile-nav button{background:#342951}

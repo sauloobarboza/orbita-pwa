@@ -29,29 +29,30 @@ function bind(){document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=
 function voice(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$("voiceBtn").classList.add("hidden");return}let r=new SR();r.lang="pt-BR";r.onresult=e=>{$("dailyNote").value+=($("dailyNote").value?" ":"")+e.results[0][0].transcript;$("dailyNote").dispatchEvent(new Event("input"))};r.onerror=()=>toast("Verifique a permissão do microfone.");$("voiceBtn").onclick=()=>{try{r.start()}catch{toast("O microfone já está ativo.")}}}
 let installPrompt=null;
 const installButton=$("installBtn");
+const isStandalone=()=>window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
+if(isStandalone()) installButton.hidden=true;
+else installButton.hidden=false;
 window.addEventListener("beforeinstallprompt",event=>{
   event.preventDefault();
   installPrompt=event;
   installButton.hidden=false;
 });
 installButton.addEventListener("click",async()=>{
-  if(!installPrompt){
-    toast("Para instalar: abra o menu do navegador e escolha Instalar aplicativo ou Adicionar à tela inicial.");
+  if(isStandalone()){installButton.hidden=true;return;}
+  if(installPrompt){
+    installPrompt.prompt();
+    const choice=await installPrompt.userChoice;
+    if(choice&&choice.outcome==="accepted")toast("Órbita instalado com sucesso!");
+    installPrompt=null;
+    if(choice&&choice.outcome==="accepted")installButton.hidden=true;
     return;
   }
-  installPrompt.prompt();
-  const choice=await installPrompt.userChoice;
-  if(choice&&choice.outcome==="accepted")toast("Órbita instalado com sucesso!");
-  installPrompt=null;
-  installButton.hidden=true;
+  toast("No Chrome: toque em ⋮ e escolha Instalar aplicativo ou Adicionar à tela inicial.");
 });
 window.addEventListener("appinstalled",()=>{
   installPrompt=null;
   installButton.hidden=true;
   toast("Órbita instalado no aparelho!");
 });
-if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!window.matchMedia("(display-mode: standalone)").matches){
-  installButton.hidden=false;
-  installButton.addEventListener("click",()=>toast("No Safari: toque em Compartilhar e depois em Adicionar à Tela de Início."));
-}
+
 bind();voice();all();if("serviceWorker"in navigator&&location.protocol!=="file:")addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.warn));
